@@ -62,7 +62,7 @@ function createTable(i) {
                 <td>${player.class}</td>
                 <td>${player.level}</td>
                 <td>${player.spec}</td>
-                <td><input type="checkbox" ${isReady} ${player.raidReadyWhen}/></td>
+                <td><input type="checkbox" ${isReady}/>${player.raidReadyWhen}</td>
                 <td>${player.joinedOn}</td>
             </tr>
             
@@ -70,7 +70,6 @@ function createTable(i) {
 }
 function addCharacter() {
     html += /*HTML*/ `
-    <form>
     <table class="newInput">
         <tr>
             <td><label for="charNameInput">Character Name:</label></td>
@@ -131,20 +130,37 @@ function addCharacter() {
             <td><label for="raidReady">Ready for Raiding?</label></td>
             <td><input id="raidReady" name="raidReady" type="checkbox">Yes</input></td>
     </table>
-    
+    <button onclick="addToObject()">Submit</button>
         `
+
     let rosterTable = document.getElementById('roster');
     rosterTable.innerHTML = html;
 }
 // Controller
 function addToObject() {
-    roster.push(
-        {
-            name: document.getElementById('charNameInput').value,
-            race: document.getElementById('charRaceInput').value,
+    let objectToPush = {};
+    let date = new Date().toLocaleDateString()
+    let ischecked = document.querySelector('#raidReady').checked;
+    let isRaidReady = ischecked ? date : '';
+   
+    console.log(ischecked)
+    objectToPush = {
+        name: document.getElementById('charNameInput').value,
+        race: document.getElementById('charRaceInput').value,
+        class: document.getElementById('classInput').value,
+        level: document.getElementById('level').value,
+        spec: document.getElementById('specInput').value,
+        raidReady: ischecked,
+        raidReadyWhen: isRaidReady,
+        joinedOn: `${date}`,
 
-        }
-    )
+    }
+    console.log(objectToPush)
+    roster.push(objectToPush)
+    console.log(roster)
+    view()
+
+
 }
 
 /*name: 'Unixan',
