@@ -6,12 +6,17 @@ td {
     border-collapse: collapse;
 }
 
-table {
+.roster {
     width: 1000px;
 }
 
 td,
 th {
     padding: 4px;
-    text-align: center;
+    
+}
+
+.newInput {
+    width: 500px;
+    
 }

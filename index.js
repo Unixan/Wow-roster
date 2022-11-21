@@ -1,5 +1,5 @@
 // Model
-
+let html = '';
 const roster = [
     {
         name: 'Kælle',
@@ -26,8 +26,8 @@ const roster = [
 // View
 
 function view() {
-    let html = /*HTML*/ `
-            <table>
+    html = /*HTML*/ `
+            <table class="roster">
                 <th>Name</th>
                 <th>Race</th>
                 <th>Class</th>
@@ -71,10 +71,87 @@ function createTable(i) {
 function addCharacter() {
     html += /*HTML*/ `
     <form>
-    <label for="charNameInput">Character Name</label><br>
-    <input type="text" id="charNameInput" name="charNameInput"><br>
-    `
+    <table class="newInput">
+        <tr>
+            <td><label for="charNameInput">Character Name:</label></td>
+            <td><input type="text" id="charNameInput" name="charNameInput"></td>
+        </tr>
+        <tr>
+        <td><label for="charRaceInput">Your Race:</label></td>
+            <td><select id="charRaceInput" name="charRaceInput">
+                    <option value="Tauren">Tauren</option>
+                    <option value="Orc">Orc</option>
+                    <option value="Blood Elf">Blood Elf</option>
+                    <option value="Troll">Troll</option>
+                    <option value="Undead">Undead</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="classInput">Class:</label></td>
+            <td><select id="classInput" name="classInput">
+                    <option value="Warrior">Warrior</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Hunter">Hunter</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Death Knight">Death Knight</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="level">Level:</label></td>
+            <td><input style=width:200px; 
+                       id="level" 
+                       name="level" 
+                       type="range" 
+                       min="1" 
+                       max="80" 
+                       value="1" 
+                       step="1" 
+                       oninput="this.nextElementSibling.value = this.value">
+                       <output style=float:right;>1</output>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="specInput">Specialization:</label></td>
+            <td><select id="specInput" name="specInput" value='none'>
+                    <option value="Melee DPS">Melee DPS</option>
+                    <option value="Ranged DPS">Ranged DPS</option>
+                    <option value="Protection">Protection</option>
+                    <option value="Healer">Healer</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="raidReady">Ready for Raiding?</label></td>
+            <td><input id="raidReady" name="raidReady" type="checkbox">Yes</input></td>
+    </table>
+    
+        `
     let rosterTable = document.getElementById('roster');
     rosterTable.innerHTML = html;
 }
 // Controller
+function addToObject() {
+    roster.push(
+        {
+            name: document.getElementById('charNameInput').value,
+            race: document.getElementById('charRaceInput').value,
+
+        }
+    )
+}
+
+/*name: 'Unixan',
+  race: 'Orc',
+  class: 'Warrior',
+  level: '1',
+  spec: 'Protection',
+  raidReady: false,
+  raidReadyWhen: '',
+  joinedOn: '', */
