@@ -142,9 +142,6 @@ function addToObject() {
         raidReadyWhen: isRaidReady,
         joinedOn: date,
     }
-    console.log(objectToPush)
-    roster.push(objectToPush)
-    console.log(roster)
     createNewChar = !createNewChar;
     view();
 }
