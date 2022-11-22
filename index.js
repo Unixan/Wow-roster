@@ -2,7 +2,8 @@
 let html = '';
 let createNewChar = true;
 let addNewCharacter = 'Add Character';
-const roster = [];
+let roster = [];
+
 
 // View
 
@@ -36,7 +37,8 @@ function view() {
 
 function createTable(i) {
     const player = roster[i];
-    const isReady = player.raidReady ? '✓' : '✗';
+    const isReady = player.raidReady ? '✓ at' : '✗';
+    console.log(roster.keys(i))
     return /*HTML*/`
             <tr>
                 <td>${player.name}</td>
@@ -44,12 +46,12 @@ function createTable(i) {
                 <td>${player.class}</td>
                 <td>${player.level}</td>
                 <td>${player.spec}</td>
-                <td style="text-align: center;">${isReady} at ${player.raidReadyWhen}</td>
+                <td style="text-align: center;">${isReady} ${player.raidReadyWhen}</td>
                 <td>${player.joinedOn}</td>
             </tr>
-            
-    `
+     `
 }
+
 function addCharacter() {
     if (createNewChar === true) {
         createNewChar = !createNewChar;
@@ -142,6 +144,7 @@ function addToObject() {
         raidReadyWhen: isRaidReady,
         joinedOn: date,
     }
+    roster.push(objectToPush)
     createNewChar = !createNewChar;
     view();
 }
