@@ -111,9 +111,7 @@ function addCharacter() {
                        min="1" 
                        max="80" 
                        value="1" 
-                       step="1" 
-                       oninput="this.nextElementSibling.value = this.value">
-                       <output style=float:right;>1</output>
+                       step="1"><output style=float:right;>1</output>
             </td>
         </tr>
         <tr>
@@ -152,7 +150,7 @@ function addToObject() {
         spec: document.getElementById('specInput').value,
         raidReady: ischecked,
         raidReadyWhen: isRaidReady,
-        joinedOn: `${date}`,
+        joinedOn: date,
 
     }
     console.log(objectToPush)
