@@ -38,7 +38,6 @@ function view() {
 function createTable(i) {
     const player = roster[i];
     const isReady = player.raidReady ? '✓ at' : '✗';
-    console.log(roster.keys(i))
     return /*HTML*/`
             <tr>
                 <td>${player.name}</td>
