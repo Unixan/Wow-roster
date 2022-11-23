@@ -97,7 +97,8 @@ function addCharacter() {
                             min="1" 
                             max="80" 
                             value="1" 
-                            step="1"><output style=float:right;>1</output>
+                            step="1">
+                            <output name="levelText" for="level" style="float: right;"></output>
                     </td>
                 </tr>
                 <tr>
@@ -115,7 +116,7 @@ function addCharacter() {
                     <td><input id="raidReady" name="raidReady" type="checkbox">Yes</input></td>
             </table>
             <button onclick="addToObject()">Submit</button>
-                `
+                `;
 
         let rosterTable = document.getElementById('roster');
         rosterTable.innerHTML = html;
